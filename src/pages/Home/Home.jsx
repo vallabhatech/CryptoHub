@@ -65,12 +65,12 @@ const Home = () => {
           <Link
             to={`/coin/${item.id}`}
             className="table-layout"
-            key={index} 
+            key={index}
             data-aos="fade-up"
           >
             <p>{item.market_cap_rank}</p>
             <div>
-              <img src={item.image}></img>
+              <img src={item.image} alt={item.name} width="40" height="40"></img>
               <p>{item.name + " - " + item.symbol}</p>
             </div>
             <p>
