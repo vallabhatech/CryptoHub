@@ -154,6 +154,7 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -349,11 +350,13 @@
     margin-bottom: 20px;
     font-weight: 500;
 }
+
 @media (max-width: 500px) {
     .table-layout div img {
         width: 25px;
         height: 25px;
     }
+}
 
 .mini-spinner {
     width: 45px;
@@ -365,8 +368,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Disabled state for inputs */
@@ -386,7 +394,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
-   
+
 }
 
 .load-more button {
@@ -425,22 +433,22 @@
     .market-cap {
         display: none;
     }
-    
+
     .loading-container {
         min-height: 300px;
         margin: 20px 0;
     }
-    
+
     .table-loading {
         padding: 30px 20px;
         margin: 20px auto;
         border-radius: 15px;
     }
-    
+
     .table-loading p {
         font-size: 1rem;
     }
-    
+
     .mini-spinner {
         width: 35px;
         height: 35px;
@@ -460,16 +468,16 @@
     .hero form input {
         width: 100px;
     }
-    
+
     .loading-container {
         min-height: 250px;
     }
-    
+
     .table-loading {
         padding: 20px 15px;
         border-radius: 12px;
     }
-    
+
     .mini-spinner {
         width: 30px;
         height: 30px;
@@ -496,13 +504,13 @@
         top: calc(100% + 15px);
     }
 
-    .hero-form, 
+    .hero-form,
     .hero form {
         width: 100%;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         gap: 12px;
     }
-    
+
     .hero-form input {
         width: 100%;
     }
@@ -525,7 +533,8 @@
     }
 
     .table-layout {
-        min-width: 500px; /* Force scroll if needed */
+        min-width: 500px;
+        /* Force scroll if needed */
         grid-template-columns: 40px 1.5fr 1fr 1fr;
         padding: 10px;
     }
@@ -535,7 +544,7 @@
     .hero-title {
         font-size: 28px;
     }
-    
+
     .hero p {
         width: 100%;
         font-size: 0.95rem;

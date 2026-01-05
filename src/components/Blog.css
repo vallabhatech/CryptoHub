@@ -20,7 +20,7 @@
   margin-bottom: 0.5rem;
 }
 
-.blog-page > .blog-desc:first-of-type {
+.blog-page>.blog-desc:first-of-type {
   max-width: 850px;
   text-align: center;
   margin-bottom: 2rem;
@@ -128,7 +128,7 @@
 
 /* === Reuse of blog-desc for intro text in list page === */
 
-.blog-page > .blog-desc:first-of-type p {
+.blog-page>.blog-desc:first-of-type p {
   margin: 0;
   text-align: center;
 }
@@ -172,7 +172,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;             
+  align-items: center;
   padding: 3rem 1.5rem 4rem;
   background: radial-gradient(circle at top, #101827 0, #020617 45%, #000000 100%);
   color: #f9fafb;
@@ -182,7 +182,7 @@
 }
 
 /* Keep content in a centered column */
-.blog-page > * {
+.blog-page>* {
   max-width: 850px;
   width: 100%;
 }
@@ -299,7 +299,7 @@
 
 /* === Section spacing === */
 
-.blog-desc + .blog-desc {
+.blog-desc+.blog-desc {
   margin-top: 0.8rem;
 }
 
@@ -508,5 +508,4 @@
   box-shadow:
     0 10px 24px rgba(59, 130, 246, 0.3),
     0 0 0 1px rgba(30, 64, 175, 0.6);
-}
 }

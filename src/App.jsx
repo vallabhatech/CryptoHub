@@ -19,7 +19,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { CoinContext } from "./context/CoinContext";
 import LoadingSpinner from "./components/LoadingSpinner";
-import Callback from "./pages/Callback";
+
 
 const App = () => {
   const { isLoading } = useContext(CoinContext);
@@ -33,9 +33,6 @@ const App = () => {
     });
   }, []);
 
-const App = () => {
-  const location = useLocation();
-  const isDashboard = location.pathname === "/dashboard";
 
   return (
     <ThemeProvider>
@@ -43,7 +40,7 @@ const App = () => {
         <div className="app">
           {/* Loading Spinner - will show when isLoading is true */}
           {isLoading && !isDashboard && <LoadingSpinner />}
-          
+
           {!isDashboard && <Navbar />}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -54,7 +51,6 @@ const App = () => {
             <Route path="/features" element={<Features />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/callback" element={<Callback />} />
             <Route
               path="/leaderboard"
               element={
