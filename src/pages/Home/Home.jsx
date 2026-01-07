@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { CoinContext } from "../../context/CoinContext";
 import { Link } from "react-router-dom";
-import { FiFilter } from "react-icons/fi";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { FiSearch, FiArrowUpRight, FiArrowDownRight, FiFilter } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -52,8 +51,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* 
-        -------------------------------------------
+      {/* -------------------------------------------
         COSMIC HERO SECTION
         -------------------------------------------
       */}
@@ -162,8 +160,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 
-        -------------------------------------------
+      {/* -------------------------------------------
         MARKET DATA SECTION
         -------------------------------------------
       */}
