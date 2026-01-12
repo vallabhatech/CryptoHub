@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Coin from "./pages/Home/Coin/Coin";
+import CoinWrapper from "./pages/Home/Coin/CoinWrapper";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
 import Blog from "./components/Blog";
@@ -12,6 +13,9 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import BlogDetail from "./components/BlogDetail";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import DashboardLayout from "./pages/Dashboard/DashboardLayout";
+import DashboardContent from "./pages/Dashboard/DashboardContent";
+import MarketOverview from "./pages/Dashboard/MarketOverview";
 import Leaderboard from "./components/Leaderboard";
 import ChangePassword from "./components/ChangePassword";
 import ForgotPassword from "./components/ForgotPassword";
@@ -28,7 +32,11 @@ import BlogArticle from './data/BlogArticle';
 const App = () => {
   const { isLoading } = useContext(CoinContext);
   const location = useLocation();
-  const isDashboard = location.pathname === "/dashboard";
+  const isDashboard = location.pathname === "/dashboard" ||
+    location.pathname === "/leaderboard" ||
+    location.pathname === "/market-overview" ||
+    location.pathname === "/change-password" ||
+    location.pathname.startsWith("/coin/");
 
   useEffect(() => {
     AOS.init({
@@ -72,7 +80,6 @@ const App = () => {
             {!isDashboard && <Navbar />}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/coin/:coinId" element={<Coin />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
@@ -82,30 +89,20 @@ const App = () => {
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/contributors" element={<Contributors />} />
 
-              <Route
-                path="/leaderboard"
-                element={
-                  <PrivateRoute>
-                    <Leaderboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/change-password"
-                element={
-                  <PrivateRoute>
-                    <ChangePassword />
-                  </PrivateRoute>
-                }
-              />
+              {/* Dashboard Layout with nested routes - all share the same sidebar */}
+              <Route element={
+                <PrivateRoute>
+                  <DashboardLayout />
+                </PrivateRoute>
+              }>
+                <Route path="/dashboard" element={<DashboardContent />} />
+                <Route path="/market-overview" element={<MarketOverview />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/change-password" element={<ChangePassword />} />
+              </Route>
+
+              {/* Coin route - accessible to all but shows sidebar if logged in */}
+              <Route path="/coin/:coinId" element={<CoinWrapper />} />
             </Routes>
             {!isDashboard && <Footer />}
           </div>
