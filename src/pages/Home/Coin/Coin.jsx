@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 import "./Coin.css";
 import { CoinContext } from "../../../context/CoinContext";
 import LineChart from "../../../components/LineChart";
+import { Helmet } from 'react-helmet-async';
 
 const Coin = () => {
   const { coinId } = useParams();
-  const [coindata, setCoinData] = useState(null);
+  const [coinData, setCoinData] = useState(null);
   const [historicaldata, setHistoricalData] = useState(null);
   const { currency } = useContext(CoinContext);
 
@@ -55,7 +56,7 @@ const Coin = () => {
     fetchHistoricalData();
   }, [currency, coinId]);
 
-  if (!coindata || !historicaldata) {
+  if (!coinData || !historicaldata) {
     return (
       <div className="coin-loader">
         <div className="spin"></div>
@@ -65,11 +66,17 @@ const Coin = () => {
 
   return (
     <div className="coin">
+      {/* --- DYNAMIC SEO BLOCK START --- */}
+      <Helmet>
+        <title>{`${coinData.name} (${coinData.symbol.toUpperCase()}) Price | CryptoHub`}</title>
+        <meta name="description" content={`Current price, market cap, and chart for ${coinData.name}.`} />
+      </Helmet>
+      {/* --- DYNAMIC SEO BLOCK END --- */}
       <div data-aos="fade-right" className="coin-left">
-        <img className="coin-logo" src={coindata?.image?.large} alt={coindata?.name} />
+        <img className="coin-logo" src={coinData?.image?.large} alt={coinData?.name} />
         <div className="coin-name-below">
-          {coindata?.name}
-          <span className="coin-symbol"> ({coindata?.symbol?.toUpperCase()})</span>
+          {coinData?.name}
+          <span className="coin-symbol"> ({coinData?.symbol?.toUpperCase()})</span>
         </div>
         <div className="coin-chart">
           <LineChart historicaldata={historicaldata} />
@@ -79,34 +86,34 @@ const Coin = () => {
         <div className="coin-info">
           <ul>
             <li>Crypto Market Rank</li>
-            <li>{coindata.market_cap_rank}</li>
+            <li>{coinData.market_cap_rank}</li>
           </ul>
           <ul>
             <li>Current Price</li>
             <li>
               {currency.Symbol}
-              {coindata.market_data.current_price[currency.name].toLocaleString()}
+              {coinData.market_data.current_price[currency.name].toLocaleString()}
             </li>
           </ul>
           <ul>
             <li>Market Cap</li>
             <li>
               {currency.Symbol}
-              {coindata.market_data.market_cap[currency.name].toLocaleString()}
+              {coinData.market_data.market_cap[currency.name].toLocaleString()}
             </li>
           </ul>
           <ul>
             <li>24 Hour high</li>
             <li>
               {currency.Symbol}
-              {coindata.market_data.high_24h[currency.name].toLocaleString()}
+              {coinData.market_data.high_24h[currency.name].toLocaleString()}
             </li>
           </ul>
           <ul>
             <li>24 Hour low</li>
             <li>
               {currency.Symbol}
-              {coindata.market_data.low_24h[currency.name].toLocaleString()}
+              {coinData.market_data.low_24h[currency.name].toLocaleString()}
             </li>
           </ul>
         </div>

@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Home.css";
 import { CoinContext } from "../../context/CoinContext";
 import { Link } from "react-router-dom";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import { FiSearch, FiArrowUpRight, FiArrowDownRight, FiFilter } from "react-icons/fi";
 import { motion } from "framer-motion";
 import MarketFilters from "../../components/MarketFilters";
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const { allCoin, filteredCoins,currency } = useContext(CoinContext);
@@ -53,6 +53,11 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* --- SEO BLOCK START --- */}
+      <Helmet>
+        <title>CryptoHub - Market Tracker</title>
+        <meta name="description" content="Track live cryptocurrency prices, market caps, and trends." />
+      </Helmet>
       {/* -------------------------------------------
         COSMIC HERO SECTION
         -------------------------------------------
@@ -236,7 +241,7 @@ const Home = () => {
 
         {visibleCount < displayCoin.length && (
           <div className="load-more-wrapper">
-            <button className="btn-neon" onClick={() => setVisibleCount(visibleCount + 10)}>
+            <button className="btn-neon" onClick={loadMoreHandler}>
               Discover More
             </button>
           </div>

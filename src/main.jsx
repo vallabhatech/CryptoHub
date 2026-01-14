@@ -7,6 +7,7 @@ import { CoinContextProvider } from "./context/CoinContext";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { LeaderboardProvider } from "./context/LeaderboardContext";
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +16,10 @@ createRoot(document.getElementById("root")).render(
         <AuthProvider>
           <LeaderboardProvider>
             <CoinContextProvider>
-              <App />
+              {/* Added HelmetProvider here */}
+              <HelmetProvider>
+                <App />
+              </HelmetProvider>
             </CoinContextProvider>
           </LeaderboardProvider>
         </AuthProvider>
