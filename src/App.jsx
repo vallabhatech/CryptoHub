@@ -3,6 +3,7 @@ import React, { useEffect, useContext } from "react";
 import Navbar from "./components/Navbar";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import NotFound from './pages/NotFound/NotFound';
 import CoinWrapper from "./pages/Home/Coin/CoinWrapper";
 import Footer from "./components/Footer";
 import Pricing from "./components/Pricing";
@@ -105,6 +106,12 @@ const App = () => {
 
               {/* Coin route - accessible to all but shows sidebar if logged in */}
               <Route path="/coin/:coinId" element={<CoinWrapper />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/coin/:coinId" element={<Coin />} />
+              {/* ... other routes ... */}
+        
+              {/* ADD THIS LINE AT THE BOTTOM: */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
             {!isDashboard && <Footer />}
           </div>

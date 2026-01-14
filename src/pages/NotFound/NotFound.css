@@ -1,0 +1,40 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh; /* Takes up most of the screen */
+  text-align: center;
+  color: white; /* Assuming dark theme */
+}
+
+.not-found h1 {
+  font-size: 6rem;
+  margin: 0;
+  color: #ffca28; /* Uses the app's accent color if available */
+}
+
+.not-found h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.not-found p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #b0b0b0;
+}
+
+.home-btn {
+  padding: 10px 20px;
+  background-color: #3e2bce; /* Match your app's button color */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.home-btn:hover {
+  background-color: #2a1da8;
+}
